@@ -1,12 +1,12 @@
 import pg from "pg";
-const { Pool } = pg;
 
 export const PgConnect = () => {
+  const { Pool } = pg;
   const pool = new Pool({
-    user: "akkaracha",
-    host: "dpg-crrqg48gph6c738k4n80-a.singapore-postgres.render.com",
-    database: "potuguese_bank",
-    password: "4SThEdtwjeWEsd87JPDU724TIJwqVSFa",
+    user: process.env.DATABASE_USER,
+    host: process.env.DATABASE_HOST,
+    database: process.env.DATABASE_DATABASE,
+    password: process.env.DATABASE_PASSWORD,
     port: 5432,
     ssl: {
       rejectUnauthorized: false,

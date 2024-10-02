@@ -10,7 +10,7 @@ const schema = z.object({
   username: z
     .string()
     .min(4, { message: "Username must be at least 4 characters" }),
-  email: z.string().email({ message: "Invalid email address" }),
+  email: z.string().email({ message: "Email must be example@example.com" }),
   password: z
     .string()
     .min(8, { message: "Password must be at least 8 characters" }),
@@ -55,7 +55,7 @@ function Register() {
       navigate("/");
     } catch (error) {
       setError("root", {
-        message: "Something went wrong",
+        message: error.response?.data?.message || "Something went wrong",
       });
     }
   };
